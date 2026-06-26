@@ -1,0 +1,27 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+
+namespace DR_FlashCards.Models
+{
+    [Table("Users")]
+    public class UsersModel
+    {
+        [Required]
+        [Column("id")]
+        public int Id { get; set; }
+        [Required]
+        [Column("name")]
+        
+        public string Name { get; set; } = string.Empty;
+        [Required]
+        [Column("email")]
+        public string Email { get; set; } = string.Empty;
+        [Required]
+        [Column("password")]
+        public string Password { get; set; } = string.Empty;
+        [Required]
+        [Column("created_at")]
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+    }
+}

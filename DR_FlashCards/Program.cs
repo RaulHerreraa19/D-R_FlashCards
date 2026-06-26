@@ -1,7 +1,18 @@
+using DR_FlashCards.Data;
+using DR_FlashCards.Models;
+using DR_FlashCards.Services;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(connectionString));
+
+builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 

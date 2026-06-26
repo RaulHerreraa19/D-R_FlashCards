@@ -1,8 +1,30 @@
-﻿@{
+﻿@model IEnumerable<DR_FlashCards.Models.FlashCardModel>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Question</th>
+                <th>Answer</th>
+            </tr>
+        </thead>
+        <tbody > 
+            @foreach (var flashCard in Model)
+            {
+                <tr>
+                    <td>@flashCard.Id</td>
+                    <td>@flashCard.Question</td>
+                    <td>@flashCard.Answer</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
