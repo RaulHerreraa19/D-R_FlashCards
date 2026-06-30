@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="DataLayer/DataLayer.csproj" Id="b5e09f10-af5e-48b5-9da6-01cec2b88458" />
   <Project Path="DR_FlashCards/DR_FlashCards.csproj" />
 </Solution>
