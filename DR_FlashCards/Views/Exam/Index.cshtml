@@ -1,0 +1,25 @@
+﻿@model IEnumerable<DR_FlashCards.Models.ExamModel>
+@{
+    Layout = "_Layout";
+}
+
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Id</th>
+        <th>Date</th>
+        <th>Subject</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var exam in Model)
+        {
+            <tr>
+                <td>@exam.Id</td>
+                <td>@exam.ExamDate.ToString("dd/MM/yyyy")</td>
+                <td>@exam.Subject</td>
+            </tr>
+        }
+        
+    </tbody>
+</table>
