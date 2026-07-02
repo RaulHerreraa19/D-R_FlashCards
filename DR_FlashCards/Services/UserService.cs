@@ -1,46 +1,63 @@
-﻿using DR_FlashCards.Models;
+﻿using DR_FlashCards.Data;
+using DR_FlashCards.DTOs;
+using DR_FlashCards.Interfaces;
+using DR_FlashCards.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
 using System.Runtime.Intrinsics.Arm;
 
 namespace DR_FlashCards.Services
-{
-    public interface IUserService
-    {
-        public Task<UsersModel> GetUsers();
-        public Task<UsersModel> Login(string email, string password);
-    }
+{    
     public class UserService : IUserService
     {
-        public UserService()
+        private readonly ApplicationDbContext _context;
+        public UserService(ApplicationDbContext context)
         {
-          
+            _context = context;
         }
 
-        public async Task<UsersModel> GetUsers()
+        public async Task<List<UsersDTO>> GetUsers()
         {
-            // Simulate an asynchronous operation
-            await Task.Delay(1000);
-            // Return a sample user for demonstration purposes
-            return new UsersModel
+            var  users = new List<UsersDTO>();
+            try
             {
-                Id = 1,
-                Name = "John Doe",
-                Email = "john.doe@example.com",
-                Password = "password123",
-                CreatedAt = DateTime.UtcNow
-            };
+                users = await _context.Users
+                    .Select(u => new UsersDTO
+                    {
+                        Id = u.Id,
+                        Name = u.Name,
+                        Email = u.Email,
+                        Password = u.Password,
+                        CreatedAt = u.CreatedAt
+                    })
+                    .ToListAsync();
+
+            }
+            catch (Exception ex)
+            {                
+                throw new Exception("An error occurred while retrieving users.", ex);
+            }
+                      
+
+            
+            return users; 
          }
 
-        public async Task<UsersModel> Login(string email, string password)
+        public async Task<UsersDTO> Login(string email, string password)
         {
 
+
+        }
+
+        public async Task<UsersDTO> Register(string name, string email, string password)
+        {
             // Simulate an asynchronous operation
             await Task.Delay(1000);
             // Return a sample user for demonstration purposes
-            return new UsersModel
+            return new UsersDTO
             {
                 Id = 1,
-                Name = "John Doe",
+                Name = name,
                 Email = email,
                 Password = password,
                 CreatedAt = DateTime.UtcNow

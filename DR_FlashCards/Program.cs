@@ -1,4 +1,5 @@
 using DR_FlashCards.Data;
+using DR_FlashCards.Interfaces;
 using DR_FlashCards.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,13 +7,23 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+//add wranggler openapi
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
+var jwt = builder.Configuration.GetSection("Jwt");
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = "JwtBearer";
+});
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IExamService, ExamService>();
+builder.Services.AddScoped<IDeckService, DeckService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IFlashCardsService, FlashCardsService>();
 
 var app = builder.Build();
 

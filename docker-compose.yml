@@ -1,0 +1,48 @@
+version: '3.9'
+
+services:
+
+  dr_flashcards_api:
+    container_name: dr_flashcards_api
+
+    build:
+      context: .
+      dockerfile: DR_FlashCards/Dockerfile
+
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:17
+
+    container_name: flashcards_postgres
+
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: FlashCardsDB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d FlashCardsDB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
