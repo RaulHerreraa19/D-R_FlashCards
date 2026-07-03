@@ -3,6 +3,7 @@ using System;
 using DR_FlashCards.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DR_FlashCards.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260702221141_NewMigration")]
+    partial class NewMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,15 +55,6 @@ namespace DR_FlashCards.Migrations
                     b.HasIndex("ExamModelId");
 
                     b.ToTable("Decks");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            IdExam = 1,
-                            IdUser = 1,
-                            Name = "Álgebra Básica"
-                        });
                 });
 
             modelBuilder.Entity("DR_FlashCards.Models.ExamModel", b =>
@@ -88,15 +82,6 @@ namespace DR_FlashCards.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Exams");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ExamDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Subject = "Matemáticas",
-                            UserId = 1
-                        });
                 });
 
             modelBuilder.Entity("DR_FlashCards.Models.FlashCardModel", b =>
@@ -125,22 +110,6 @@ namespace DR_FlashCards.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Flashcards");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Answer = "4",
-                            MazoId = 1,
-                            Question = "¿Cuánto es 2+2?"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Answer = "X = 5",
-                            MazoId = 1,
-                            Question = "Despeja X: X + 5 = 10"
-                        });
                 });
 
             modelBuilder.Entity("DR_FlashCards.Models.UsersModel", b =>
@@ -174,16 +143,6 @@ namespace DR_FlashCards.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "test@example.com",
-                            Name = "Usuario de Prueba",
-                            Password = "123"
-                        });
                 });
 
             modelBuilder.Entity("DeckModelFlashCardModel", b =>

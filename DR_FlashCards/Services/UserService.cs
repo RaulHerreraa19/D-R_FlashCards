@@ -46,7 +46,7 @@ namespace DR_FlashCards.Services
         public async Task<UsersDTO> Login(string email, string password)
         {
 
-
+            throw new NotImplementedException();
         }
 
         public async Task<UsersDTO> Register(string name, string email, string password)

@@ -8,6 +8,6 @@ namespace DR_FlashCards.Interfaces
         public Task<FlashCardDTO> GetFlashCardById(int id);
         public Task<FlashCardDTO> CreateFlashCard(FlashCardDTO flashCard);
         public Task<FlashCardDTO> UpdateFlashCard(int id, FlashCardDTO flashCard);
-        public Task DeleteFlashCard(int id);
+        public Task<FlashCardDTO> DeleteFlashCard(int id);
     }
 }

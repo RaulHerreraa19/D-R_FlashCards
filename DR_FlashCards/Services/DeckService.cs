@@ -7,14 +7,13 @@ using Microsoft.EntityFrameworkCore;
 namespace DR_FlashCards.Services
 {    
     public class DeckService : IDeckService
-    {
-        private readonly IDeckService _deckInterface;
+    {        
 
         private readonly ApplicationDbContext _dBContext;
-        public DeckService(ApplicationDbContext dBContext, IDeckService deckInterface) 
+        public DeckService(ApplicationDbContext dBContext) 
         {
             _dBContext = dBContext;
-            _deckInterface = deckInterface;
+         
         }
 
         public async Task<List<DeckDTO>> GetAllDecks(int userId, int examId)
@@ -53,6 +52,8 @@ namespace DR_FlashCards.Services
                 // Handle the exception (e.g., log it)
                 throw new Exception($"An error occurred while retrieving the deck with ID {id}: {ex.Message}", ex);
             }
+
+            return deck;
         }
 
         public async Task<DeckDTO> CreateDeck(DeckDTO deck)

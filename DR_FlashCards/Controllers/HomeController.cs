@@ -14,7 +14,9 @@ namespace DR_FlashCards.Controllers
         public IActionResult Privacy()
         {
             return View();
-        }        
+        }      
+        
+        
        
     }
 }

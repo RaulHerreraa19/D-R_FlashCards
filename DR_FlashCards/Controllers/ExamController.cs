@@ -15,9 +15,9 @@ namespace DR_FlashCards.Controllers
             _ExamService = ExamService;
         }
 
-        public IActionResult Index()  // este es el metodo que se va a llamar cuando se haga un get a /Exam/Index
+        public IActionResult Index(int id)  // este es el metodo que se va a llamar cuando se haga un get a /Exam/Index
         {
-            var result = _ExamService.GetAllExams().Result; // getexam apenas se va a crear
+            var result = _ExamService.GetAllExams(1).Result; // getexam apenas se va a crear
             return View(result); // vista porque es index si no truena
         }
     }

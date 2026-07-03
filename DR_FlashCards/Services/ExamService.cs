@@ -20,7 +20,7 @@ namespace DR_FlashCards.Services
             _context = context;
         }
         public async Task<List<ExamsDTO>> GetAllExams(int userId)
-        {
+        {            
             var exams = new List<ExamsDTO>();
             try
             {
@@ -104,6 +104,8 @@ namespace DR_FlashCards.Services
             exam.Id = examModel.Id;
             return exam;
         }
+
+
     }
 
 }

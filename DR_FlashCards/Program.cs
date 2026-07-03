@@ -11,8 +11,12 @@ builder.Services.AddControllersWithViews();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(connectionString));
-var jwt = builder.Configuration.GetSection("Jwt");
+    options.UseNpgsql(
+        builder.Configuration.GetConnectionString("DefaultConnection")
+    )
+);
+
+
 
 builder.Services.AddAuthentication(options =>
 {

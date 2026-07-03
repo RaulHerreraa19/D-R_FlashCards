@@ -16,7 +16,7 @@ namespace DR_FlashCards.Services
         public async Task<UsersDTO> Login(string email, string password)
         {
             UsersDTO user = new UsersDTO();
-            var encryptedPassword 
+            var encryptedPassword = "asdasd";
             try
             {
                 var checkEmail = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
@@ -34,14 +34,15 @@ namespace DR_FlashCards.Services
             return user;
         }
 
-        public async Task<UsersDTO> Register(string name, string email, string password)
-        {
-            // Implement your registration logic here
-            // For example, you can create a new user in the database
-            // If the registration is successful, return a UsersDTO object
-            // If the registration fails, throw an exception or return null
-            // Example implementation:
-        }
+        //public async Task<UsersDTO> Register(string name, string email, string password)
+        //{
+        //    // Implement your registration logic here
+        //    // For example, you can create a new user in the database
+        //    // If the registration is successful, return a UsersDTO object
+        //    // If the registration fails, throw an exception or return null
+        //    // Example implementation:
+            
+        //}
 
     }
 }
