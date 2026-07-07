@@ -21,6 +21,7 @@ namespace DR_FlashCards.Services
         }
         public async Task<List<ExamsDTO>> GetAllExams(int userId)
         {            
+            
             var exams = new List<ExamsDTO>();
             try
             {
@@ -83,7 +84,7 @@ namespace DR_FlashCards.Services
                 .FirstOrDefaultAsync();
             }
             catch (Exception ex)
-            {
+            { 
                 // Manejar la excepción según sea necesario
                 Console.WriteLine($"Error al obtener el examen: {ex.Message}");
             }

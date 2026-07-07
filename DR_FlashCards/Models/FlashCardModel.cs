@@ -18,6 +18,7 @@ namespace DR_FlashCards.Models
         [Column("mazo_id")]
         public int MazoId { get; set; }
 
+
         public IEnumerable<DeckModel> Decks { get; set; } = Enumerable.Empty<DeckModel>();
     }
 

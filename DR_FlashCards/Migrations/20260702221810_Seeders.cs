@@ -10,7 +10,7 @@ namespace DR_FlashCards.Migrations
     /// <inheritdoc />
     public partial class Seeders : Migration
     {
-        /// <inheritdoc />
+        /// <inheritdoc />  
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.InsertData(

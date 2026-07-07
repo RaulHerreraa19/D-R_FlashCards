@@ -1,13 +1,19 @@
-﻿@model IEnumerable<DR_FlashCards.Models.FlashCardModel>
+﻿@model DR_FlashCards.DTOs.UsersDTO;
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Welcome @Model.Name</h1>z 
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 <div>
+    <h3>Tus Datos:</h3>
+    <ul>
+        <li><strong>Email:</strong> @Model.Email</li>
+        <li><strong>Token guardado:</strong> @User.FindFirst("JWTToken")?.Value</li>
+    </ul>
+
     <table>
         <thead>
             <tr>

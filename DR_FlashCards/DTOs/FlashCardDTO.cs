@@ -7,7 +7,8 @@ namespace DR_FlashCards.DTOs
         public int Id { get; set; }
         public string Question { get; set; } = string.Empty;
         public string Answer { get; set; } = string.Empty;
-        public int MazoId { get; set; }
+        public int DeckId { get; set; }
+        public int UserId { get; set; }
         public IEnumerable<DeckDTO> Decks { get; set; } = Enumerable.Empty<DeckDTO>();
 
         public FlashCardDTO() { }
@@ -16,7 +17,7 @@ namespace DR_FlashCards.DTOs
             Id = model.Id;
             Question = model.Question;
             Answer = model.Answer;
-            MazoId = model.MazoId;            
+            DeckId = model.MazoId;
             Decks = model.Decks.Select(deck => new DeckDTO(deck)).ToList();
         }
 
